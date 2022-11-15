@@ -5,14 +5,19 @@
 
 # Directories
 /src : contains all the source code for our project
+
 /build : contains all binaries of the project
+
 /.vscode : VS Code configuration file
 
 
 # Files
 
 client.cpp : code for our client 
+
 server.cpp : code for bare-bones TCP server (allows only one client)
+
 Multi-Server.cpp : code for our TCP server (allows multiple clients)
+
 Makefile : build instructions for g++ to include ws2_32.lib while building executables and where to place complied binaries 
 
