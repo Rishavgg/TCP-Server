@@ -13,7 +13,7 @@ void recv_msg(int);
 using namespace std;
 string msg;
 string name = "DEFAULT";
-int main(int argc,const char **argv,const char **envp){
+int main(int argc,const char **argv){
     
     string ipaddress = "127.0.0.1";
     int port = 50000;
