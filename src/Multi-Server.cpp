@@ -83,7 +83,7 @@ int main()
 						if (outSock != listening && outSock != sock)
 						{
 							ostringstream ss;
-							ss << "SOCKET #" << sock << ": " << buf << "\n";
+							ss << buf <<  "\n";
 							string strOut = ss.str();
 							send(outSock, strOut.c_str(), strOut.size() + 1024, 0);
 						}
