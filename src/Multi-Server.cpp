@@ -85,7 +85,7 @@ int main()
 							ostringstream ss;
 							ss << "SOCKET #" << sock << ": " << buf << "\n";
 							string strOut = ss.str();
-							send(outSock, strOut.c_str(), strOut.size() + 1, 0);
+							send(outSock, strOut.c_str(), strOut.size() + 1024, 0);
 						}
 					}
 				}
@@ -107,4 +107,3 @@ int main()
 	WSACleanup();
 	system("pause");
 }
-					
