@@ -85,7 +85,7 @@ void send_msg(int rsocket){
 void recv_msg(int rsocket){
     char name_msg[BUF_SIZE + sizeof(rsocket) + 1];
     while (1){
-        int str_len = recv(rsocket, name_msg, BUF_SIZE + sizeof(rsocket) + 1, 0);
+        int str_len = recv(rsocket, name_msg, BUF_SIZE + 1, 0);
         if (str_len == -1){
             exit(-1);
         }

@@ -52,7 +52,7 @@ int main()
 			{
 				SOCKET client = accept(listening, nullptr, nullptr);
 				FD_SET(client, &master);
-				string welcomeMsg = "Welcome\r\n";
+				string welcomeMsg = "Welcome\n";
 				send(client, welcomeMsg.c_str(), welcomeMsg.size() + 1, 0);
 			}
 			else
@@ -83,7 +83,7 @@ int main()
 						if (outSock != listening && outSock != sock)
 						{
 							ostringstream ss;
-							ss << "SOCKET #" << sock << ": " << buf << "\r\n";
+							ss << "SOCKET #" << sock << ": " << buf << "\n";
 							string strOut = ss.str();
 							send(outSock, strOut.c_str(), strOut.size() + 1, 0);
 						}
@@ -95,7 +95,7 @@ int main()
 	FD_CLR(listening, &master);
 	closesocket(listening);
 	
-	string msg = "Server is shutting down. Goodbye\r\n";
+	string msg = "Shutting Down\n";
 
 	while (master.fd_count > 0)
 	{
