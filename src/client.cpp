@@ -6,15 +6,18 @@
 #include <ws2tcpip.h>
 
 #define BUF_SIZE 4096
+
 void send_msg(int);
 void recv_msg(int);
 
 using namespace std;
 string msg;
-int main(){
+std::string name = "DEFAULT";
+int main(int argc,const char **argv){
     
     string ipaddress = "127.0.0.1";
     int port = 50000;
+    string name = "["+std::string(argv[1])+"]";
 
     WSADATA data;
     WORD ver = MAKEWORD(2,2);
@@ -45,21 +48,9 @@ int main(){
         return 0;
     }
 
-    // char buf[4096];
-    // string userInput;
-    // do{
-    //     cout << ">";
-    //     cin >> userInput;
-    //     if(userInput.size()>0){
-    //         int sendResult = send(rsocket,userInput.c_str(),userInput.size() + 1,0);
-    //         if (sendResult != SOCKET_ERROR){
-    //             memset(buf,0,4096);
-    //             int rbyte = recv(rsocket,buf,4096,0);
-    //             cout << "SERVER " << string(buf,0,rbyte) << endl;
-    //         }
-    //     }
+    std::string my_name = "#new client:" + std::string(argv[1]);
+    send(rsocket, my_name.c_str(), my_name.length() + 1, 0);
 
-    // }while(userInput.size() > 0);
     thread snd(send_msg, rsocket);
     thread rcv(recv_msg, rsocket);
     
@@ -77,15 +68,15 @@ void send_msg(int rsocket){
             closesocket(rsocket);
             exit(0);
         }
-        string name_msg = rsocket + " " + msg;
+        string name_msg = name + " " + msg;
         send(rsocket, name_msg.c_str(), name_msg.length() + 1, 0);
     }
 }
 
 void recv_msg(int rsocket){
-    char name_msg[BUF_SIZE + sizeof(rsocket) + 1];
+    char name_msg[BUF_SIZE + name.length() + 1];
     while (1){
-        int str_len = recv(rsocket, name_msg, BUF_SIZE + 1, 0);
+        int str_len = recv(rsocket, name_msg, BUF_SIZE + name.length(), 0);
         if (str_len == -1){
             exit(-1);
         }
