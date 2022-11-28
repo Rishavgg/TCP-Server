@@ -2,7 +2,8 @@
     "files.associations": {
         "list": "cpp",
         "fstream": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "iostream": "cpp"
     },
     "cmake.sourceDirectory": "${workspaceFolder}/src"
 }
