@@ -12,12 +12,12 @@ void recv_msg(int);
 
 using namespace std;
 string msg;
-std::string name = "DEFAULT";
-int main(int argc,const char **argv){
+string name = "DEFAULT";
+int main(int argc,const char **argv,const char **envp){
     
     string ipaddress = "127.0.0.1";
     int port = 50000;
-    string name = "["+std::string(argv[1])+"]";
+    name = "["+std::string(argv[1])+"]";
 
     WSADATA data;
     WORD ver = MAKEWORD(2,2);
@@ -48,7 +48,7 @@ int main(int argc,const char **argv){
         return 0;
     }
 
-    std::string my_name = "#new client:" + std::string(argv[1]);
+    std::string my_name = "new client:" + std::string(argv[1]);
     send(rsocket, my_name.c_str(), my_name.length() + 1, 0);
 
     thread snd(send_msg, rsocket);
