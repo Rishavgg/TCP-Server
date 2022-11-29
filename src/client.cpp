@@ -25,13 +25,13 @@ int main(int argc,const char **argv){
     int wsResult = WSAStartup(ver,&data);
 
     if(wsResult != 0){
-        cerr << "-----can't start quitting-----" << wsResult << endl;
+        cerr << "---can't start quitting---" << wsResult << endl;
         return 0;
     }
 
     SOCKET rsocket = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
     if(rsocket == INVALID_SOCKET){
-        cerr <<"----- can't create socket quitting-----"<< WSAGetLastError <<endl;
+        cerr <<"--- can't create socket quitting---"<< WSAGetLastError <<endl;
         return 0;
     }
 
