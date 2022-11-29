@@ -13,13 +13,13 @@ int main(){
     int wsOK = WSAStartup(ver,&Winsockdata);
 
     if(wsOK != 0){
-        cerr << "-----can't start quitting-----" << endl;
+        cerr << "---can't start quitting---" << endl;
         return 0;
     }
 
     SOCKET listening = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
     if(listening == INVALID_SOCKET){
-        cerr <<"----- can't create socket quitting-----"<<endl;
+        cerr <<"--- can't create socket quitting---"<<endl;
         return 0;
     }
 
@@ -68,8 +68,6 @@ int main(){
 
         send(clientsocket,buf,datar + 1,0);
      }
-
      closesocket(clientsocket);
-
      WSACleanup();
 }
