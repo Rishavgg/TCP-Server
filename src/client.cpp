@@ -17,7 +17,7 @@ int main(int argc,const char **argv){
     
     string ipaddress = "127.0.0.1";
     int port = 50000;
-    name = "["+std::string(argv[1])+"]:";
+    name = "["+string(argv[1])+"]:";
 
     WSADATA data;
     WORD ver = MAKEWORD(2,2);
