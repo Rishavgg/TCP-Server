@@ -48,7 +48,7 @@ int main(int argc,const char **argv){
         return 0;
     }
 
-    string my_name = "new client:" + std::string(argv[1]);
+    string my_name = "new client:" + string(argv[1]);
     send(rsocket, my_name.c_str(), my_name.length() + 1, 0);
 
     thread snd(send_msg, rsocket);
