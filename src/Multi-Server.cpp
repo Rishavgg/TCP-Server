@@ -14,14 +14,14 @@ int main()
 	int wsOk = WSAStartup(ver, &wsData);
 	if (wsOk != 0)
 	{
-		cerr << "Can't Initialize winsock! Quitting" << endl;
+		cerr << "Can't Initialize winsock! Quitting!" << endl;
 		return 0;
 	}
 
 	SOCKET listening = socket(AF_INET, SOCK_STREAM, 0);
 	if (listening == INVALID_SOCKET)
 	{
-		cerr << "Can't create a socket! Quitting" << endl;
+		cerr << "Can't create a socket! Quitting!" << endl;
 		return 0;
 	}
 
@@ -52,7 +52,7 @@ int main()
 			{
 				SOCKET client = accept(listening, nullptr, nullptr);
 				FD_SET(client, &master);
-				string welcomeMsg = "Welcome\n";
+				string welcomeMsg = "Welcome to the Chat!\n";
 				send(client, welcomeMsg.c_str(), welcomeMsg.size() + 1, 0);
 			}
 			else
